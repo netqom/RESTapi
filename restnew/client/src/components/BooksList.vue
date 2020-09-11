@@ -19,7 +19,7 @@
   <tbody>
     <tr v-for="row in books">
       <td>{{row.id}}</td>
-      <td><img v-bind:src="`${row.image}`" /></td>
+      <td><img v-bind:src="`http://localhost:8080/${row.image}`" /></td>
       <td>{{row.name}}</td>
       <td>{{row.published}}</td>
       <td>{{row.rating}}/10</td>

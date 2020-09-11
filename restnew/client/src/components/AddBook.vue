@@ -18,14 +18,15 @@
 		
 		<div class="form-group">
           <label for="age">Image</label>
-      <input type="file" accept="image/jpeg">
+		<input name="image" type="file" @change="onFileChange" />
         </div>
-        <button v-on:click="saveCustomer" class="btn btn-success">Submit</button>
+		
+        <button v-on:click="saveBook" class="btn btn-success">Submit</button>
     </div>
     
     <div v-else>
       <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" v-on:click="newCustomer">Add</button>
+      <button class="btn btn-success" v-on:click="newBook">Add</button>
     </div>
   </div>
 </template>
@@ -42,18 +43,21 @@ export default {
         name: "",
         published: "",
         rating: "",
+        image: "",
         active: false
       },
+	  selectedFile: "",
       submitted: false
     };
   },
   methods: {
     /* eslint-disable no-console */
-    saveCustomer() {
+    saveBook() {
       var data = {
         name: this.book.name,
         published: this.book.published,
-        rating: this.book.rating
+        rating: this.book.rating,
+        image: this.book.image
       };
  
       http
@@ -68,9 +72,27 @@ export default {
  
       this.submitted = true;
     },
-    newCustomer() {
+    newBook() {
       this.submitted = false;
       this.book = {};
+    },
+	onFileChange(e) {
+      const selectedFile = e.target.files[0]; // accessing file      
+	  this.selectedFile = selectedFile;
+	  this.book.image = selectedFile.name;
+	  this.onUploadFile();
+    },
+	onUploadFile() {
+      const formData = new FormData();
+      formData.append("file", this.selectedFile);  // appending file
+     // sending file to the backend
+      http.post("/upload", formData)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
     /* eslint-enable no-console */
   }
