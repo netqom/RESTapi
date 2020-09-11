@@ -1,4 +1,0 @@
-Hi there
-I have worked on the test job and integrated Node REST API with Vue.
-Currently the image upload is not working fine till now but it will be resolved.
-Rest you can check the code the add form and listing works well. 
