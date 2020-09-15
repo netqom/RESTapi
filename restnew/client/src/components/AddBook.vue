@@ -17,10 +17,18 @@
         </div>
 		
 		<div class="form-group">
+          <label for="desc">Description</label>
+          <textarea class="form-control" id="desc" required v-model="book.desc" name="desc"></textarea>
+        </div>
+		
+		<div class="form-group">
           <label for="age">Image</label>
 		<input name="image" type="file" @change="onFileChange" />
         </div>
-		
+		<div class="form-group">
+          <label for="amazonlink">Amazon Link</label>
+          <input type="text" class="form-control" id="amazonlink" required v-model="book.amazonlink" name="amazonlink">
+        </div>
         <button v-on:click="saveBook" class="btn btn-success">Submit</button>
     </div>
     
@@ -44,6 +52,8 @@ export default {
         published: "",
         rating: "",
         image: "",
+        desc: "",
+        amazonlink: "",
         active: false
       },
 	  selectedFile: "",
@@ -57,7 +67,9 @@ export default {
         name: this.book.name,
         published: this.book.published,
         rating: this.book.rating,
-        image: this.book.image
+        image: this.book.image,
+        desc: this.book.desc,
+        amazonlink: this.book.amazonlink
       };
  
       http

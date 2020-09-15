@@ -2,7 +2,7 @@
     <div id="app" class="container-fluid">
         <div class="site-info">
             <h1>Dev</h1>
-            <h3>Vue Nodejs test job</h3>
+            <h3>Vue Nodejs Test Job</h3>
         </div>
         <nav>
             <router-link class="btn btn-primary" to="/books">Books</router-link>

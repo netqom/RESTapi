@@ -12,6 +12,12 @@ module.exports = (sequelize, Sequelize) => {
 	rating: {
     type: Sequelize.FLOAT
     },
+	desc: {
+    type: Sequelize.TEXT
+    },
+	amazonlink: {
+    type: Sequelize.STRING
+    },
     active: {
     type: Sequelize.BOOLEAN, defaultValue: false
     },
